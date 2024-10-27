@@ -1,0 +1,24 @@
+<h1>Photo Widget</h1>
+<p>See all photos from your Flickr feed on one sight.</p>
+<%= form_with url: root_path, method: :get do |form| %>
+
+
+  <%= form.label :user_id, "Your User ID on flickr:" %>
+  <%= form.text_field :user_id %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<% unless @photos.nil? %>
+  <% @photos.each do |photo| %>
+   <img src=<%="https://live.staticflickr.com/#{photo.server}/#{photo.id}_#{photo.secret}.jpg"%>>
+  <% end %>
+
+  <hr>
+
+  <!-- Option 2 with method from flickr gem -->
+
+  <%# @photo_urls.each do |url| %>
+<!--    <img src="<%#= url %>">-->
+  <%# end %>
+  
+<% end %>
